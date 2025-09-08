@@ -1,0 +1,53 @@
+.add-form {
+  width: 400px;
+  display: grid;
+  row-gap: 20px;
+
+  &__modal {
+    &-button {
+      &-close {
+        --buttonCloseModal: 20px;
+
+        position: relative;
+        padding: 15px;
+        justify-self: end;
+        border: none;
+        background-color: transparent;
+        width: var(--buttonRemoveSize);
+        height: var(--buttonRemoveSize);
+        cursor: pointer;
+
+        &::after,
+        &::before {
+          position: absolute;
+          content: '';
+          top: 50%;
+          left: 50%;
+          translate: -50% -50%;
+          height: 100%;
+          width: 2px;
+          background-color: var(--color-dark-blue);
+          transition-duration: var(--transition-duration);
+        }
+
+        &::after {
+          rotate: -45deg;
+        }
+
+        &::before {
+          rotate: 45deg;
+        }
+      }
+
+      &-add {
+        padding-block: 5px;
+        padding-inline: 10px;
+        justify-self: end;
+        border: none;
+        color: var(--color-white);
+        background-color: var(--color-light-blue);
+        border-radius: 5px;
+      }
+    }
+  }
+}

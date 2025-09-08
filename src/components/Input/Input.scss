@@ -1,0 +1,23 @@
+.input {
+  height: 40px;
+  padding-block: 15px;
+  padding-inline: 15px;
+  width: 100%;
+  color: var(--font-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: var(--transition-duration);
+  background-color: var(--background-color);
+
+  &--icon-find {
+    background-image: url("@/assets/icons/search.svg");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position-x: 99%;
+    background-position-y: center;
+  }
+
+  &:focus-visible {
+    outline-color: var(--color-light-blue);
+  }
+}

@@ -1,0 +1,25 @@
+:root {
+  --color-white: #FFFFFF;
+  --color-light-blue: #6C63FF;
+  --color-dark-blue: #534CC2;
+  --color-dark: #332b2b;
+  --color-light-grey: #9a9a9a;
+
+  --background-color: var(--color-white);
+  --font-color: var(--color-dark);
+  --border-color: var(--color-dark-blue);
+
+  --container-width: 800px;
+
+  --border-radius: 7px;
+
+  --transition-duration: 0.2s;
+  --transition-duration-long: 0.4s;
+
+}
+
+[data-theme="dark"] {
+  --background-color: var(--color-dark);
+  --font-color: var(--color-white);
+  --border-color: var(--color-white);
+}

@@ -1,0 +1,45 @@
+.task {
+  padding-block: 50px;
+
+  &__inner {
+    display: grid;
+    row-gap: 10px;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__description {
+    display: flex;
+    align-items: center;
+    height: 40px;
+
+    &-input {
+      margin-left: 20px;
+    }
+  }
+
+  &__actions {
+    &-button {
+      padding-block: 10px;
+      padding-inline: 5px;
+      width: 80px;
+      color: var(--font-color);
+      border: 2px solid var(--color-white);
+      border-radius: 5px;
+      background-color: var(--background-color);
+      transition-duration: var(--transition-duration);
+
+      @media (hover: hover) {
+        &:hover {
+          border-color: var(--color-light-grey);
+        }
+      }
+
+      &:active {
+        border-color: var(--color-light-grey);
+      }
+    }
+  }
+}
