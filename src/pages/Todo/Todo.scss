@@ -15,6 +15,10 @@
     display: grid;
     grid-template-columns: 1fr 16% 7%;
     column-gap: 15px;
+    
+    @media (width < 767px) {
+      grid-template-columns: 1fr 20% 10%;
+    }
   }
 
   &__add-button {

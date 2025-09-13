@@ -22,7 +22,7 @@ const TaskList = (props) => {
         ))}
       </ul>
       )
-      : <h1 className="task-list__output">Tasks list is empty</h1>
+      : <h2 className="task-list__output">Tasks list is empty</h2>
       }
     </>
 

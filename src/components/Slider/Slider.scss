@@ -1,0 +1,8 @@
+.slider {
+  overflow: hidden;
+  &__inner {
+    display: flex;
+    width: var(--container-width);
+    white-space: nowrap;
+  }
+}

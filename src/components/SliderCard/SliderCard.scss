@@ -1,0 +1,17 @@
+.slider-card {
+  padding: 20px;
+  min-width: 33.2%;
+  border: 3px solid var(--border-color);
+  border-radius: 10px;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+  }
+
+  &__button {
+    border: 1px solid var(--border-color);
+    padding: 5px;
+  }
+}

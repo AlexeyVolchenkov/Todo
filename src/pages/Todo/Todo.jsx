@@ -1,30 +1,45 @@
 import './Todo.scss'
-import {useEffect, useMemo, useRef, useState, createContext} from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  createContext,
+  useContext
+} from "react";
 import plusSvg from '../../assets/icons/plus.svg'
 import Input from "../../components/Input";
 import Select from "../../components/Select";
 import Button from "../../components/Button";
 import TaskList from "../../components/TaskList";
 import FormAddTask from "../../components/FormAddTask";
+import {ThemeContext} from "@/App";
+import Slider from "@/components/Slider";
 
 export const TaskContext = createContext(null)
 
 
-const Todo = (props) => {
-  const {
-    theme,
-    setTheme,
-  } = props
+const Todo = () => {
 
   let sortedTasksList = []
 
+  const { theme, switchTheme } = useContext(ThemeContext)
+
   const modalAddTask = useRef(null)
+  const refInputTask = useRef(null);
+
   const [selectedSort, setSelectedSort] = useState('')
   const [searchSort, setSearchSort] = useState('')
+  const [idTask, setIdTask] = useState(1)
   const [taskList, setTaskList] = useState(() => {
     const tasks = JSON.parse(localStorage.getItem('tasks'))
-    tasks.map((task) => ({...task, editting: false}))
-    return tasks.map((task) => ({...task, editting: false}))
+    if (tasks && tasks?.length > 0) {
+      tasks.map((task) => ({...task, editting: false}))
+      setIdTask(tasks[tasks.length - 1].id + 1)
+      return tasks.map((task) => ({...task, editting: false}))
+    }
+
+    return []
   })
 
   const selectOptions= [
@@ -74,32 +89,28 @@ const Todo = (props) => {
 
   const openModalAddTask = () => {
     modalAddTask.current.showModal()
+    refInputTask.current.focus()
   }
 
   const closeModal = () => {
     modalAddTask.current.close()
   }
 
-  const addTask = (newTask) => {
-    if (taskList) {
-      const addItem = {
-        id: taskList.length + 1,
-        description: newTask,
-        done: false,
-        editting: false,
-      }
-
-      setTaskList([...taskList, addItem])
-    } else {
-      const addItem = {
-        id: 0,
-        description: newTask,
-        done: false,
-        editting: false,
-      }
-
-      setTaskList([addItem])
+  const propagationCloseModal = (event) => {
+    if (event.target === modalAddTask.current) {
+      modalAddTask.current.close()
     }
+  }
+
+  const addTask = (newTask) => {
+    const addItem = {
+      id: idTask,
+      description: newTask,
+      done: false,
+      editting: false,
+    }
+    setIdTask(idTask + 1)
+    setTaskList([...taskList, addItem])
     closeModal()
   }
 
@@ -123,17 +134,18 @@ const Todo = (props) => {
             onChange={sortTasks}
           />
           <Button
-            setTheme={setTheme}
+            clickHandler={switchTheme}
+            backgroundColor="dark-blue"
           >
             {theme.toLowerCase() === 'light' ? (<span>Dark</span>) : (<span>Light</span>)}
           </Button>
         </div>
-          <TaskContext.Provider value={{ taskList ,setTaskList, removeTask, editTask }}>
-            <TaskList
+        <TaskContext.Provider value={{ taskList, setTaskList, removeTask, editTask, addTask }}>
+          <TaskList
             tasks={sortedTasksList}
           />
-          </TaskContext.Provider>
-
+          {/*<Slider />*/}
+        </TaskContext.Provider>
       </div>
       <button
         className="todo__add-button"
@@ -149,10 +161,12 @@ const Todo = (props) => {
       <dialog
         className="todo__modal"
         ref={modalAddTask}
+        onClick={() => propagationCloseModal(event)}
       >
         <FormAddTask
           closeModal={closeModal}
           addTask={addTask}
+          ref={refInputTask}
         />
       </dialog>
     </div>

@@ -1,20 +1,24 @@
 import './Button.scss'
+import clsx from "clsx";
 
 const Button = (props) => {
   const {
     children,
-    setTheme,
+    className,
+    clickHandler,
+    /*
+      'dark-blue' | 'transparent'
+     */
+    backgroundColor,
   } = props
 
-  const clickHandler = (event) => {
-    const isLight = event.target.textContent.toLowerCase() === 'light'
 
-    setTheme(isLight ? 'Light': 'Dark')
-  }
 
   return (
     <button
-      className='button'
+      className={clsx('button', className, {
+        [`button--${backgroundColor}`]: backgroundColor,
+      })}
       onClick={() => clickHandler(event)}
     >
       {children}

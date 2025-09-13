@@ -26,11 +26,10 @@ ol {
   overflow: hidden !important;
 }
 
-.theme {
-  height: 100vh;
-  background-color: var(--background-color);
-  color: var(--font-color);
-  transition: var(--transition-duration);
+.theme-dark {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  border-color: var(--color-white);
 }
 
 .container {

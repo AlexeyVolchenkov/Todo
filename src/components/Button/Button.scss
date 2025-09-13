@@ -1,16 +1,25 @@
 .button {
   border: none;
   border-radius: var(--border-radius);
-  color: white;
-  background-color: var(--color-dark-blue);
+  transition-duration: var(--transition-duration);
 
-  @media (hover: hover) {
-    &:hover {
+  &--dark-blue {
+    color: white;
+    background-color: var(--color-dark-blue);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-light-blue);
+      }
+    }
+
+    &:active {
       background-color: var(--color-light-blue);
     }
   }
 
-  &:active {
-    background-color: var(--color-light-blue);
+  &--transparent {
+    color: var(--font-color);
+    background-color: var(--background-color);
   }
 }

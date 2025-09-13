@@ -6,11 +6,13 @@ const FormAddTask = (props) => {
   const {
     closeModal,
     addTask,
+    ref,
   } = props
 
   const [inputTask, setInputTask] = useState('')
 
-  const onClickHandler = (inputTask) => {
+  const onClickHandler = (event, inputTask) => {
+    event.preventDefault()
     addTask(inputTask)
     setInputTask('')
   }
@@ -37,11 +39,12 @@ const FormAddTask = (props) => {
           placeholder="Walk with..."
           value={inputTask}
           onChange={(value) => setInputTask(value)}
+          ref={ref}
         />
         <button
           className="add-form__modal-button-add"
-          type="button"
-          onClick={() => onClickHandler(inputTask)}
+          type="submit"
+          onClick={() => onClickHandler(event, inputTask)}
         >Add</button>
       </form>
     </div>

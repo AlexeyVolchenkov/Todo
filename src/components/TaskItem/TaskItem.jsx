@@ -1,4 +1,6 @@
 import Input from "@/components/Input";
+import { BsPencil } from "react-icons/bs";
+import { IoEyeOutline } from "react-icons/io5";
 import {useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {TaskContext} from "@/pages/Todo/Todo";
@@ -64,10 +66,16 @@ const TaskItem = (props) => {
           </p>)}
       </div>
       <div className="task-list__actions">
-        <button className="task-list__button-detail" onClick={() => navigate(`/todo/${id}`)}></button>
+        <button className="task-list__button-detail" onClick={() => navigate(`/todo/${id}`)}>
+          <IoEyeOutline className="task-list__button-detail-icon"/>
+        </button>
         {editting
           ? <button className="task-list__button-confirm" onClick={() => editChange(id)}>Сохранить</button>
-          : <button className="task-list__button-update" onClick={() => editChange(id)}></button>
+          : <button className="task-list__button-update" onClick={() => editChange(id)}>
+            <BsPencil
+              className="task-list__button-update-icon"
+            />
+          </button>
         }
         <button className="task-list__button-remove" onClick={() => removeTask(id)}></button>
       </div>

@@ -14,4 +14,9 @@
   &:active {
     background-color: var(--color-light-blue);
   }
+
+  &__option {
+    appearance: none;
+    border-radius: 5px;
+  }
 }

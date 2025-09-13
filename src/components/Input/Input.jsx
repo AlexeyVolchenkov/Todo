@@ -10,6 +10,7 @@ const Input = (props) => {
     onChange,
     type,
     icon,
+    ref,
   } = props
 
   return (
@@ -24,6 +25,7 @@ const Input = (props) => {
         placeholder={placeholder}
         value={value}
         onChange={(event) => onChange(event.target.value)}
+        ref={ref}
       />
     </>
   );

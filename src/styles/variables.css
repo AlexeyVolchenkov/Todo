@@ -3,11 +3,13 @@
   --color-light-blue: #6C63FF;
   --color-dark-blue: #534CC2;
   --color-dark: #332b2b;
+  --color-brown: #673939;
   --color-light-grey: #9a9a9a;
 
   --background-color: var(--color-white);
   --font-color: var(--color-dark);
   --border-color: var(--color-dark-blue);
+  --header-color: var(--color-dark-blue);
 
   --container-width: 800px;
 
@@ -22,4 +24,5 @@
   --background-color: var(--color-dark);
   --font-color: var(--color-white);
   --border-color: var(--color-white);
+  --header-color: var(--color-brown);
 }

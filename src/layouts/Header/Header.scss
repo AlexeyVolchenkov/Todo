@@ -1,0 +1,30 @@
+.header {
+  --borderRadiusHeader: 20px;
+
+  background-color: var(--header-color);
+  border-bottom-left-radius: var(--borderRadiusHeader);
+  border-bottom-right-radius: var(--borderRadiusHeader);
+
+  &__inner {
+    padding: 10px 20px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-button {
+      &-theme,
+      &-back {
+        width: 50px;
+        height: 30px;
+
+        @media (hover: hover) {
+          &:hover {
+            border: 2px solid var(--border-color);
+          }
+        }
+      }
+    }
+  }
+}
